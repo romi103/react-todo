@@ -25,7 +25,9 @@ describe('TodoApp', () => {
         var todoData = {
             id: 11,
             text: 'test text',
-            completed: false
+            completed: false,
+            createdAt: 0,
+            completedAt: undefined
         }
         var todoApp = TestUtils.renderIntoDocument(<TodoApp/>);
         todoApp.setState({ todos: [todoData]});
