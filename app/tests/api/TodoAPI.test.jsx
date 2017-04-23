@@ -65,8 +65,52 @@ describe('TodoAPI', () => {
 
     });
 
+    describe('filterTodo', () =>{
+        var todos = [{
+            id: 1,
+            text: "Some text", 
+            completed: true
+        }, {
+            id: 2,
+            text: "other text",
+            completed: false
+            },{
+                id: 3,
+                text: "Some text",
+                completed: true
+            }];
+
+            it('should return all items if showcoplated is true', () => {
+                var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+
+                expect(filteredTodos.length).toBe(3);
+            });
+
+            it('should return items that are not completed', () => {
+                var filteredTodos = TodoAPI.filterTodos(todos, false, '');
+
+                expect(filteredTodos.length).toBe(1);
+            });
+
+            it('should sort by completed status', () => {
+                var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+
+                expect(filteredTodos[0].completed).toBe(false);
+            });
+//yyyyyyyyyyyyyyyyyyyyyyy
+            it('should filter todos by searchText', () => {
+                var filteredTodos = TodoAPI.filterTodos(todos, true, 'some');
+
+                expect(filteredTodos.length).toBe(2);
+            });
+
+            it('should return all todos if searchTeaxt is empty', () => {
+                var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+
+                expect(filteredTodos.length).toBe(3);
+            });
 
 
-
+    });
 
 });
